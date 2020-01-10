@@ -190,9 +190,11 @@ class Toolbar extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
+    const nextProps = this.props;
+
     const { isSearchActiveInternal } = this.state;
-    const { isSearchActive, hidden } = this.props;
+    const { isSearchActive, hidden } = prevProps;
 
     // if search is active and we clicked on the results which does not allow search
     // then close the previous search.

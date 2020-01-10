@@ -82,11 +82,11 @@ class CenterElement extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { isSearchActive } = this.props;
+  componentDidUpdate(prevProps) {
+    const { isSearchActive } = prevProps;
 
-    if (isSearchActive !== nextProps.isSearchActive) {
-      this.animateElements(nextProps.isSearchActive);
+    if (isSearchActive !== this.props.isSearchActive) {
+      this.animateElements(this.props.isSearchActive);
     }
   }
 

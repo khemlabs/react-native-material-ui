@@ -77,8 +77,10 @@ class LeftElement extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { isSearchActive, leftElement } = this.props;
+  componentDidUpdate(prevProps) {
+    const nextProps = this.props;
+
+    const { isSearchActive, leftElement } = prevProps;
 
     if (nextProps.isSearchActive !== isSearchActive) {
       this.animateIcon(nextProps.isSearchActive);

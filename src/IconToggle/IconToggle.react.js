@@ -153,19 +153,19 @@ class IconToggle extends PureComponent {
     this.onPressOut = this.onPressOut.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
     const { iconSize } = this.state;
     const { percent } = this.props;
 
-    const nextIconSize = getIconSize(nextProps);
+    const nextIconSize = getIconSize(this.props);
 
-    if (iconSize !== nextIconSize || nextProps.percent !== percent) {
+    if (iconSize !== nextIconSize || this.props.percent !== percent) {
       const containerSize = getContainerSize(iconSize);
 
       this.setState({
         containerSize,
         iconSize,
-        rippleSize: getRippleSize(containerSize, nextProps.percent),
+        rippleSize: getRippleSize(containerSize, this.props.percent),
       });
     }
   }

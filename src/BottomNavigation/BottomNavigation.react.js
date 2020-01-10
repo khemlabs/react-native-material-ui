@@ -66,15 +66,15 @@ class BottomNavigation extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { style, hidden } = this.props;
+  componentDidUpdate(prevProps) {
+    const { style, hidden } = prevProps;
 
-    if (nextProps.style !== style) {
-      this.setState({ styles: getStyles(nextProps, this.context) });
+    if (this.props.style !== style) {
+      this.setState({ styles: getStyles(this.props, this.context) });
     }
 
-    if (nextProps.hidden !== hidden) {
-      if (nextProps.hidden === true) {
+    if (this.props.hidden !== hidden) {
+      if (this.props.hidden === true) {
         this.hide();
       } else {
         this.show();

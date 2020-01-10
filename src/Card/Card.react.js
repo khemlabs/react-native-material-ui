@@ -45,8 +45,9 @@ class Card extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ styles: getStyles(nextProps) });
+  componentDidUpdate() {
+    const styles = getStyles(this.props);
+    if (styles !== this.state.styles) this.setState({ styles });
   }
 
   renderContent = () => {

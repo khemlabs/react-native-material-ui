@@ -185,22 +185,20 @@ class ActionButton extends PureComponent {
     this.state = { render: 'button' };
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { hidden } = this.props;
+  componentDidUpdate(prevProps, prevState) {
+    // const { hidden } = prevProps;
 
-    if (nextProps.hidden !== hidden) {
-      if (nextProps.hidden === true) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    }
-  }
+    // if (this.props.hidden !== hidden) {
+    //   if (this.props.hidden === true) {
+    //     this.hide();
+    //   } else {
+    //     this.show();
+    //   }
+    // }
 
-  componentWillUpdate(nextProps, nextState) {
-    const { render } = this.state;
+    const { render } = prevState;
 
-    if (render !== nextState.render) {
+    if (render !== this.state.render) {
       LayoutAnimation.easeInEaseOut();
     }
   }

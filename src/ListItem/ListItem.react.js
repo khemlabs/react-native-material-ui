@@ -229,8 +229,11 @@ class ListItem extends PureComponent {
     };
   }
 
-  componentWillReceiveProps(nextPros) {
-    this.setState({ numberOfLines: getNumberOfLines(nextPros) });
+  componentDidUpdate() {
+    const numberOfLines = getNumberOfLines(this.props);
+    if (numberOfLines !== this.state.numberOfLines) {
+      this.setState({ numberOfLines });
+    }
   }
 
   onMenuPressed = labels => {
